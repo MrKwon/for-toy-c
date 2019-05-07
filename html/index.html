@@ -8,27 +8,35 @@
       function headerMaker(h1, h2, h3, desc) {
         return `
           <header>
-            <h1><a href="${h1.href}">${h1.content}</a></h1>
+            <h1>
+              <a href="${h1.href}">${h1.content}</a>
+            </h1>
             <h2><a href="${h2.herf}">${h2.content}</a></h2>
             <h3>${h3}</h3>
             ${desc}
           </header>
         `
       }
-      var nav = `
-        <nav>
-          <ol>
-            <li><a href="apperance.html">Apperance</a></li>
-            <li><a href="loves.html">Loves</a></li>
-            <li><a href="careers.html">Career</a></li>
-          </ol>
-          <ul>
-            <li>My birthday is 5th July</li>
-            <li>I live in Seoul</li>
-            <li>My Dream is Most Rich Person in the world</li>
-          </ul>
-        </nav>
-      `
+      
+      function navMaker(orderList) {
+        // let orderElements = `
+        //   <li><a href="${orderList[0].href}">${orderList[0].content}</a><li>
+        //   <li><a href="${orderList[1].href}">${orderList[1].content}</a><li>
+        //   <li><a href="${orderList[2].href}">${orderList[2].content}</a><li>
+        // `
+        let orderElements = ''
+        for (let i = 0; i < 3; i++) {
+          orderElements = orderElements + `<li><a href="${orderList[i].href}">${orderList[i].content}</a></li>`
+        }
+        return `
+          <nav>
+            <ol>
+              ${orderElements}
+            </ol>
+          </nav>
+        `
+      }
+
       function articleMaker(h2, cont) {
         return `
           <article>
@@ -39,13 +47,20 @@
       }
       
       document.write(headerMaker(
-        { href: "index.html", content: "Hello KwonMC" }, // h1
+        { href: "index.html", content: "KwonMC" }, // h1
         { herf: "http://www.instagram.com/kwonmc_", content: "@kwonmc_" }, // h2
         "erased11@gmail.com", // h3
         "This is Min Cheol's World" // desc
         )
       )
-      document.write(nav)
+      document.write(navMaker(
+          [
+            { href: "apperance.html", content: "Appearance" },
+            { href: "loves.html", content: "Loves" },
+            { href: "careers.html", content: "Career" },
+          ]
+        )
+      )
       document.write(articleMaker(
           "Diary 190507", // h2
           "I'm happy because of someone" // cont
