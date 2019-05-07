@@ -5,21 +5,13 @@
   </head>
   <body>
     <script>
-      var header = `
-        <header>
-          <h1><a href="index.html">KwonMC</a></h1>
-          <h2><a href="https://www.instagram.com/kwonmc_">@kwonmc_</a></h2>
-          <h3>erased11@gmail.com</h3>
-          Here is KwonMC's Homepage
-        </header>
-      `
-      function headerFunc(_name, _insta, _email) {
+      function headerMaker(h1, h2, h3, desc) {
         return `
           <header>
-            <h1><a href="index.html">${_name}</a></h1>
-            <h2><a href="https://www.instagram.com/kwonmc_">${_insta}</a></h2>
-            <h3>${_email}</h3>
-            Here is KwonMC's Homepage
+            <h1><a href="${h1.href}">${h1.content}</a></h1>
+            <h2><a href="${h2.herf}">${h2.content}</a></h2>
+            <h3>${h3}</h3>
+            ${desc}
           </header>
         `
       }
@@ -37,16 +29,28 @@
           </ul>
         </nav>
       `
-      var article = `
-        <article>
-          <h2>Diary 190426</h2>
-          Today's weather is suck. I hate rainny day.
-        </article>
-      `
-      document.write(headerFunc('kwonmc', '@kwonmc_', 'erased11@gmail.com'))
-      document.write(headerFunc('SohnSH', '@imtoy_c', 'hotsaltypleasure@gmail.com'))
+      function articleMaker(h2, cont) {
+        return `
+          <article>
+            <h2>${h2}</h2>
+            ${cont}
+          </article>
+        `
+      }
+      
+      document.write(headerMaker(
+        { href: "index.html", content: "Hello KwonMC" }, // h1
+        { herf: "http://www.instagram.com/kwonmc_", content: "@kwonmc_" }, // h2
+        "erased11@gmail.com", // h3
+        "This is Min Cheol's World" // desc
+        )
+      )
       document.write(nav)
-      document.write(article)
+      document.write(articleMaker(
+          "Diary 190507", // h2
+          "I'm happy because of someone" // cont
+        )
+      )
     </script>
   </body>
 </html>
